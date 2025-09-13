@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+きみ？いまDevTools見てるでしょ
+ざーんねんなにもありませーんwww
+ざーこ♥
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>貢献サーバー</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="貢献サーバー - meitetuのサイト" />
+  <meta property="og:description" content="meitetuの貢献サーバーページ" />
+  <meta property="og:url" content="https://meitetu.net/kouken.html" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&family=Material+Symbols+Outlined" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yHicgBoD4XyWn7D0QvIfN3P8JBe+NmQPPBQkOJ+vl2C0lHJuYPjHbSNgKcUzNCD8B4f8kxxtS6FtF6czdE5adA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'mplus': ['M PLUS Rounded 1c', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    [lang="ja"] {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+    
+    /* 完全にリセットして新しい色システム */
+    .theme-light {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #f3f4f6 100%);
+      color: #1f2937;
+    }
+    
+    .theme-dark {
+      background: linear-gradient(to bottom right, #1c1c1c, #2b2b2b);
+      color: #ffffff;
+    }
+    
+    /* ライトテーマ用の文字色 */
+    .theme-light .main-title { color: #1f2937 !important; }
+    .theme-light .sub-title { color: #4b5563 !important; }
+    .theme-light .section-title { color: #1f2937 !important; }
+    .theme-light .section-text { color: #374151 !important; }
+    .theme-light .link-text { color: #4b5563 !important; }
+    .theme-light .footer-text { color: #6b7280 !important; }
+    
+    /* ダークテーマ用の文字色 */
+    .theme-dark .main-title { color: #ffffff !important; }
+    .theme-dark .sub-title { color: #e5e7eb !important; }
+    .theme-dark .section-title { color: #ffffff !important; }
+    .theme-dark .section-text { color: #d1d5db !important; }
+    .theme-dark .link-text { color: #e5e7eb !important; }
+    .theme-dark .footer-text { color: #9ca3af !important; }
+    
+    /* リンクの色は固定 */
+    .link-cyan { color: #22d3ee !important; }
+    .link-cyan:hover { color: #3b82f6 !important; }
+    
+    /* ボックスの背景 */
+    .theme-light .box-bg { background: rgba(255, 255, 255, 0.7) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; }
+    .theme-dark .box-bg { background: rgba(30, 30, 30, 0.8) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
+    
+    /* アイコンの色 */
+    .icon {
+      color: #00bcd4;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    
+    /* iframeのスタイル */
+    iframe {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body id="main-body" class="theme-dark font-inter leading-relaxed p-8 m-0 min-h-screen flex flex-col transition-all duration-300">
+
+  <!-- Theme Toggle Button -->
+  <div class="fixed top-4 right-4 z-40">
+    <button id="theme-toggle" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-white/20">
+      <svg id="sun-icon" class="w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+      </svg>
+      <svg id="moon-icon" class="w-6 h-6 text-gray-800" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+      </svg>
+    </button>
+  </div>
+
+  <main class="flex-grow">
+    <header class="text-center mb-8">
+      <div class="text-3xl font-mplus mb-4 sub-title" lang="ja">
+        <span class="material-symbols-outlined icon text-4xl align-middle">dns</span>貢献鯖
+      </div>
+      <h1 class="text-5xl font-mplus main-title" lang="ja">Syokathu鯖</h1>
+    </header>
+
+    <div class="text-center mb-8">
+      <div class="inline-block box-bg backdrop-blur-sm rounded-xl p-6 shadow-2xl">
+        <iframe
+          src="https://discord.com/widget?id=1284508174560526497&theme=dark"
+          width="350"
+          height="500"
+          allowtransparency="true"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          class="max-w-full">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="home.html" class="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xl rounded-lg no-underline shadow-lg shadow-cyan-400/40 transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 font-mplus" lang="ja">
+        <i class="fa-solid fa-house mr-2"></i>ホームに戻る
+      </a>
+    </div>
+  </main>
+
+  <script>
+    console.log('スクリプト開始');
+    
+    function initializePage() {
+      console.log('ページ初期化開始');
+      
+      const themeButton = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      const body = document.getElementById('main-body');
+      
+      if (themeButton && sunIcon && moonIcon && body) {
+        console.log('テーマボタン要素発見');
+        
+        // デバイステーマの検知
+        const savedTheme = localStorage.getItem('theme');
+        let isDarkMode;
+        
+        if (savedTheme) {
+          isDarkMode = savedTheme === 'dark';
+        } else {
+          isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        
+        updateTheme(isDarkMode);
+        
+        // テーマ変更イベント
+        themeButton.addEventListener('click', function() {
+          const currentlyDark = body.classList.contains('theme-dark');
+          updateTheme(!currentlyDark);
+        });
+        
+        // デバイステーマ変更の監視
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches);
+          }
+        });
+        
+        function updateTheme(isDark) {
+          console.log('テーマ変更:', isDark ? 'ダーク' : 'ライト');
+          
+          if (isDark) {
+            body.classList.remove('theme-light');
+            body.classList.add('theme-dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            body.classList.remove('theme-dark');
+            body.classList.add('theme-light');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+            localStorage.setItem('theme', 'light');
+          }
+          
+          console.log('現在のbodyクラス:', body.className);
+        }
+        
+      } else {
+        console.error('テーマ要素が見つかりません');
+      }
+    }
+    
+    // 初期化
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    } else {
+      initializePage();
+    }
+  </script>
+
+</body>
+</html>

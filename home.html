@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--
+じつはほぼChatGPTに任せてる()
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>meitetuのサイト</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="meitetuのサイト" />
+  <meta property="og:description" content="適当にVSCode&ChatGPTで書いたサイト" />
+  <meta property="og:url" content="https://meitetu.net/" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'mplus': ['M PLUS Rounded 1c', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    [lang="ja"] {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+    
+    /* 完全にリセットして新しい色システム */
+    .theme-light {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #f3f4f6 100%);
+      color: #1f2937;
+    }
+    
+    .theme-dark {
+      background: linear-gradient(to bottom right, #1c1c1c, #2b2b2b);
+      color: #ffffff;
+    }
+    
+    /* ライトテーマ用の文字色 */
+    .theme-light .main-title { color: #1f2937 !important; }
+    .theme-light .sub-title { color: #4b5563 !important; }
+    .theme-light .section-title { color: #1f2937 !important; }
+    .theme-light .section-text { color: #374151 !important; }
+    .theme-light .link-text { color: #4b5563 !important; }
+    .theme-light .footer-text { color: #6b7280 !important; }
+    
+    /* ダークテーマ用の文字色 */
+    .theme-dark .main-title { color: #ffffff !important; }
+    .theme-dark .sub-title { color: #e5e7eb !important; }
+    .theme-dark .section-title { color: #ffffff !important; }
+    .theme-dark .section-text { color: #d1d5db !important; }
+    .theme-dark .link-text { color: #e5e7eb !important; }
+    .theme-dark .footer-text { color: #9ca3af !important; }
+    
+    /* リンクの色は固定 */
+    .link-cyan { color: #22d3ee !important; }
+    .link-cyan:hover { color: #3b82f6 !important; }
+    
+    /* ボックスの背景 */
+    .theme-light .box-bg { background: rgba(255, 255, 255, 0.7) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; }
+    .theme-dark .box-bg { background: rgba(30, 30, 30, 0.8) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
+  </style>
+</head>
+<body id="main-body" class="theme-dark font-inter leading-relaxed p-8 m-0 min-h-screen flex flex-col transition-all duration-300">
+
+  <!-- GitHub Notice -->
+  <div id="gh-notice" class="hidden bg-orange-500 text-black p-4 text-center font-bold rounded-lg mb-8">
+    GitHub Pagesで表示中です
+  </div>
+
+  <!-- Theme Toggle Button -->
+  <div class="fixed top-4 right-4 z-40">
+    <button id="theme-toggle" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-white/20">
+      <svg id="sun-icon" class="w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+      </svg>
+      <svg id="moon-icon" class="w-6 h-6 text-gray-800" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+      </svg>
+    </button>
+  </div>
+
+  <main class="flex-grow">
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-mplus mb-2 main-title" lang="ja">meitetuのサイト</h1>
+      <h3 class="font-normal text-xl font-mplus sub-title" lang="ja">適当にVSCode&ChatGPTで書いたサイト</h3>
+      <div class="mt-4" id="counter-placeholder"></div>
+    </header>
+
+    <section class="box-bg backdrop-blur-sm rounded-xl p-8 max-w-2xl mx-auto my-8 shadow-2xl" lang="ja">
+      <h2 class="text-3xl font-mplus mb-4 section-title">めいてつとは</h2>
+      <p class="text-xl font-mplus section-text">中1、鯖缶、ガキ</p>
+    </section>
+
+    <div class="text-center mt-12">
+      <a href="gadget.html" class="inline-block m-4 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xl rounded-lg no-underline shadow-lg shadow-cyan-400/40 transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 font-mplus" lang="ja">デバイス紹介</a>
+      <a href="kouken.html" class="inline-block m-4 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xl rounded-lg no-underline shadow-lg shadow-cyan-400/40 transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 font-mplus" lang="ja">貢献サーバー</a>
+      <a href="https://status.meitetu.net/status/meitetu-status" target="_blank" rel="noopener noreferrer" class="external-link inline-block m-4 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xl rounded-lg no-underline shadow-lg shadow-cyan-400/40 transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 font-mplus" lang="ja">鯖ステータス</a>
+    </div>
+
+    <div class="max-w-2xl mx-auto my-8 mb-16 p-4 px-8 box-bg backdrop-blur-sm rounded-xl shadow-lg text-lg font-mplus" aria-label="リンク集" lang="ja">
+      <div class="mb-4">
+        <h2 class="text-2xl mb-4 section-title">リンク集</h2>
+        <div class="mb-4">
+          <a href="https://spring-server.com/" target="_blank" rel="noopener noreferrer" class="external-link link-cyan underline mr-5 cursor-pointer hover:text-blue-400 transition-colors" lang="ja">https://spring-server.com/</a>
+          <span class="mr-8 link-text">はるさん めっちゃすごい</span>
+        </div>
+        <div class="mb-4">
+          <a href="https://syokathu.cloudfree.jp/ssite/" target="_blank" rel="noopener noreferrer" class="external-link link-cyan underline mr-5 cursor-pointer hover:text-blue-400 transition-colors" lang="ja">https://syokathu.cloudfree.jp/ssite/</a>
+          <span class="mr-8 link-text">syokathu 大親友</span>
+        </div>
+        <div>
+          <a href="https://surfox.drmd.info" target="_blank" rel="noopener noreferrer" class="external-link link-cyan underline mr-5 cursor-pointer hover:text-blue-400 transition-colors" lang="ja">https://surfox.drmd.info</a>
+          <span class="link-text">さーふぉっくす</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div id="message-overlay" class="fixed inset-0 bg-black bg-opacity-70 text-white text-2xl flex justify-center items-center z-50 invisible opacity-0 transition-opacity duration-300 font-mplus" lang="ja">
+    別のサイトに移行します...
+  </div>
+
+  <script>
+    console.log('スクリプト開始');
+    
+    function initializePage() {
+      console.log('ページ初期化開始');
+      
+      const themeButton = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      const body = document.getElementById('main-body');
+      
+      if (themeButton && sunIcon && moonIcon && body) {
+        console.log('テーマボタン要素発見');
+        
+        // デバイステーマの検知
+        const savedTheme = localStorage.getItem('theme');
+        let isDarkMode;
+        
+        if (savedTheme) {
+          isDarkMode = savedTheme === 'dark';
+        } else {
+          isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        
+        updateTheme(isDarkMode);
+        
+        // テーマ変更イベント
+        themeButton.addEventListener('click', function() {
+          const currentlyDark = body.classList.contains('theme-dark');
+          updateTheme(!currentlyDark);
+        });
+        
+        // デバイステーマ変更の監視
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches);
+          }
+        });
+        
+        function updateTheme(isDark) {
+          console.log('テーマ変更:', isDark ? 'ダーク' : 'ライト');
+          
+          if (isDark) {
+            body.classList.remove('theme-light');
+            body.classList.add('theme-dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            body.classList.remove('theme-dark');
+            body.classList.add('theme-light');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+            localStorage.setItem('theme', 'light');
+          }
+          
+          console.log('現在のbodyクラス:', body.className);
+        }
+        
+      } else {
+        console.error('テーマ要素が見つかりません');
+      }
+      
+      // カウンター読み込み
+      const counterContainer = document.getElementById('counter-placeholder');
+      if (counterContainer) {
+        loadAccessCounter();
+      }
+      
+      // 外部リンク設定
+      setupExternalLinks();
+      
+      // GitHub Pages通知
+      if (location.hostname.includes("github.io")) {
+        const notice = document.getElementById("gh-notice");
+        if (notice) notice.classList.remove("hidden");
+      }
+    }
+    
+    function loadAccessCounter() {
+      const container = document.getElementById('counter-placeholder');
+      container.innerHTML = '<div class="text-center text-blue-400 animate-pulse">🔄 カウンター読み込み中...</div>';
+      
+      const img = new Image();
+      img.src = "https://counter.256server.com/meitetuservercounter?" + Date.now();
+      img.alt = "アクセスカウンター";
+      img.className = "max-w-full h-auto mx-auto rounded";
+      
+      const timeout = setTimeout(() => {
+        showCounterError();
+      }, 5000);
+      
+      img.onload = function() {
+        clearTimeout(timeout);
+        container.innerHTML = '';
+        container.appendChild(img);
+        
+        const status = document.createElement('div');
+        status.textContent = '✅ カウンター表示中';
+        status.className = 'text-xs text-green-400 mt-1 text-center';
+        container.appendChild(status);
+      };
+      
+      img.onerror = function() {
+        clearTimeout(timeout);
+        showCounterError();
+      };
+      
+      function showCounterError() {
+        container.innerHTML = `
+          <div class="text-center p-3 border border-red-500 rounded bg-red-900/20">
+            <div class="text-red-400 mb-2">❌ カウンター読み込み失敗</div>
+            <button onclick="loadAccessCounter()" class="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded transition-colors">
+              🔄 再試行
+            </button>
+          </div>
+        `;
+      }
+    }
+    
+    function setupExternalLinks() {
+      setTimeout(() => {
+        const externalLinks = document.querySelectorAll('a.external-link');
+        
+        externalLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const overlay = document.getElementById('message-overlay');
+            if (overlay) {
+              overlay.classList.remove('invisible');
+              overlay.classList.add('opacity-100');
+              
+              setTimeout(() => {
+                window.location.href = this.href;
+              }, 800);
+            } else {
+              window.location.href = this.href;
+            }
+          });
+        });
+      }, 100);
+    }
+    
+    // 初期化
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    } else {
+      initializePage();
+    }
+    
+    window.loadAccessCounter = loadAccessCounter;
+  </script>
+
+</body>
+</html>
